@@ -1,18 +1,18 @@
-# Use official Python image
-FROM python:3.11
+# استخدم صورة Python الرسمية
+FROM python:3.11-slim
 
-# Set working directory
+# إعداد مجلد العمل
 WORKDIR /app
 
-# Copy requirements and install them
+# نسخ الملفات
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app code
-COPY main.py .
+# نسخ كود التطبيق
+COPY . .
 
-# Expose port
+# تحديد البورت
 EXPOSE 8000
 
-# Run FastAPI app
+# أمر التشغيل
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
